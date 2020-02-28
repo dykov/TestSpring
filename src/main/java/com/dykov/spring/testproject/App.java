@@ -1,6 +1,7 @@
 package com.dykov.spring.testproject;
 
 import com.dykov.spring.testproject.beans.Client;
+import com.dykov.spring.testproject.beans.Event;
 import com.dykov.spring.testproject.beans.EventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,18 +16,24 @@ public class App {
         this.logger = logger;
     }
 
-    public void logEvent(String msg) {
+    public void logEvent(Event event, String msg) {
         String message = msg.replaceAll(
                 String.valueOf(client.getId()), client.getName()
         );
-        logger.logEvent(message);
+        event.setMessage(message);
+        logger.logEvent(event);
     }
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         App app = context.getBean("app", App.class);
-        app.logEvent("Hello, user 100");
+
+        Event event = context.getBean(Event.class);
+        app.logEvent(event, "Hello, user 100");
+
+        event = context.getBean(Event.class);
+        app.logEvent(event, "Hi, user 100");
 
         ((ConfigurableApplicationContext) context).close();
     }
