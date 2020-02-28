@@ -3,6 +3,7 @@ package com.dykov.spring.testproject.beans;
 public class Client {
     private int id;
     private String name;
+    private String greeting;
 
     public Client(int id, String name) {
         this.id = id;
@@ -23,5 +24,9 @@ public class Client {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 }

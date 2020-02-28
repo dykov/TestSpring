@@ -5,11 +5,11 @@ import com.dykov.spring.testproject.beans.Event;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CacheFileLogger extends FileEventLogger {
+public class CacheFileEventLogger extends FileEventLogger {
     private int cacheSize;
     private List<Event> cache;
 
-    public CacheFileLogger(String fileName, int cacheSize) {
+    public CacheFileEventLogger(String fileName, int cacheSize) {
         super(fileName);
         this.cacheSize = cacheSize;
         this.cache = new ArrayList<Event>(cacheSize);

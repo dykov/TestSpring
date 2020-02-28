@@ -10,9 +10,18 @@
         <constructor-arg value="target/event_log.txt"/>
     </bean>
 
-    <bean id="cacheFileLogger" class="com.dykov.spring.testproject.loggers.CacheFileLogger"
+    <bean id="cacheFileEventLogger" class="com.dykov.spring.testproject.loggers.CacheFileEventLogger"
           destroy-method="destroy" parent="fileEventLogger">
         <constructor-arg value="5"/>
+    </bean>
+
+    <bean id="combinedEventLogger" class="com.dykov.spring.testproject.loggers.CombinedEventLogger">
+        <constructor-arg>
+            <list>
+                <ref bean="consoleEventLogger"/>
+                <ref bean="fileEventLogger"/>
+            </list>
+        </constructor-arg>
     </bean>
 
 </beans>
