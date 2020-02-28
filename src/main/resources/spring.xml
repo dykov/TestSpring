@@ -30,8 +30,7 @@
     </bean>
 
     <bean id="cacheFileLogger" class="com.dykov.spring.testproject.beans.CacheFileLogger"
-          init-method="init" destroy-method="destroy">
-        <constructor-arg value="target/event_log.txt"/>
+          destroy-method="destroy" parent="fileEventLogger">
         <constructor-arg value="5"/>
     </bean>
 
