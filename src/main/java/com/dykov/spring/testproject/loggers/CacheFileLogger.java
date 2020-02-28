@@ -1,4 +1,6 @@
-package com.dykov.spring.testproject.beans;
+package com.dykov.spring.testproject.loggers;
+
+import com.dykov.spring.testproject.beans.Event;
 
 import java.util.ArrayList;
 import java.util.List;

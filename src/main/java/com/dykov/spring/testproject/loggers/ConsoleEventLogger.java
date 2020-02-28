@@ -1,4 +1,6 @@
-package com.dykov.spring.testproject.beans;
+package com.dykov.spring.testproject.loggers;
+
+import com.dykov.spring.testproject.beans.Event;
 
 public class ConsoleEventLogger implements EventLogger {
     public void logEvent(Event event) {

@@ -1,5 +1,6 @@
-package com.dykov.spring.testproject.beans;
+package com.dykov.spring.testproject.loggers;
 
+import com.dykov.spring.testproject.beans.Event;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -15,9 +16,9 @@ public class FileEventLogger implements EventLogger {
     }
 
     private void init() {
-        this.file = new File(fileName) ;
+        this.file = new File(fileName);
 
-        if(!file.exists()) {
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -26,7 +27,7 @@ public class FileEventLogger implements EventLogger {
         }
 
         if (file.exists() && !file.canWrite()) {
-            throw new IllegalArgumentException("Cannot write to file: " + fileName) ;
+            throw new IllegalArgumentException("Cannot write to file: " + fileName);
         }
     }
 

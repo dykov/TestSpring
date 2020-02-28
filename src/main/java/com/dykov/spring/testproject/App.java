@@ -2,8 +2,7 @@ package com.dykov.spring.testproject;
 
 import com.dykov.spring.testproject.beans.Client;
 import com.dykov.spring.testproject.beans.Event;
-import com.dykov.spring.testproject.beans.EventLogger;
-import org.springframework.context.ApplicationContext;
+import com.dykov.spring.testproject.loggers.EventLogger;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
