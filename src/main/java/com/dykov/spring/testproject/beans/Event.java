@@ -31,7 +31,7 @@ public class Event {
                 "id=" + id +
                 ", message='" + message + '\'' +
                 ", date=" + dateFormat.format(date) +
-                '}';
+                "}\r\n";
     }
 
 }

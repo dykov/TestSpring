@@ -3,16 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="app" class="com.dykov.spring.testproject.App">
+        <constructor-arg ref="client"/>
+        <constructor-arg ref="cacheFileLogger"/>
+    </bean>
+
     <bean id="client" class="com.dykov.spring.testproject.beans.Client">
         <constructor-arg value="100" type="int"/>
         <constructor-arg value="Alex" type="java.lang.String"/>
-    </bean>
-
-    <bean id="consoleEventLogger" class="com.dykov.spring.testproject.beans.ConsoleEventLogger"/>
-
-    <bean id="app" class="com.dykov.spring.testproject.App">
-        <constructor-arg ref="client"/>
-        <constructor-arg ref="consoleEventLogger"/>
     </bean>
 
     <bean id="event" class="com.dykov.spring.testproject.beans.Event" scope="prototype">
@@ -22,6 +20,19 @@
         <constructor-arg>
             <bean class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
         </constructor-arg>
+    </bean>
+
+    <bean id="consoleEventLogger" class="com.dykov.spring.testproject.beans.ConsoleEventLogger"/>
+
+    <bean id="fileEventLogger" class="com.dykov.spring.testproject.beans.FileEventLogger"
+          init-method="init">
+        <constructor-arg value="target/event_log.txt"/>
+    </bean>
+
+    <bean id="cacheFileLogger" class="com.dykov.spring.testproject.beans.CacheFileLogger"
+          init-method="init" destroy-method="destroy">
+        <constructor-arg value="target/event_log.txt"/>
+        <constructor-arg value="5"/>
     </bean>
 
 </beans>

@@ -25,16 +25,16 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
         App app = context.getBean("app", App.class);
 
         Event event = context.getBean(Event.class);
         app.logEvent(event, "Hello, user 100");
 
-        event = context.getBean(Event.class);
+        event = (Event) context.getBean("event");
         app.logEvent(event, "Hi, user 100");
 
-        ((ConfigurableApplicationContext) context).close();
+        context.close();
     }
 }
